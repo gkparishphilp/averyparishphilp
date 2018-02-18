@@ -1,0 +1,23 @@
+
+
+#mainHeader{:role => 'banner'}
+	%nav.navbar.navbar-fixed-top.navbar-default{ :role => 'navigation'}
+		.navbar-inner
+			.container
+				.navbar-header
+					%a.navbar-brand.brand{ href: '/' }
+						%i.ll-logo{ style: 'color:#333;' }
+						Avery Parish-Philp
+					%button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+						%span.sr-only Toggle navigation
+						%span.icon-bar
+						%span.icon-bar
+						%span.icon-bar
+				#top-navigation.nav-collapse.subnav-collapse.navbar-collapse.collapse
+					%ul.nav.navbar-nav.navbar-right
+						%li{ class: set_css_if( path: '/about' ) }
+							%a{ href: '/about' }
+								About Me
+						%li{ class: set_css_if( path: '/contacts/new' ) }
+							%a{ href: '/contacts/new' }
+								Contact Me

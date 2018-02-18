@@ -1,0 +1,137 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require ./app_theme
+ *= require ./custom/utilities
+ *= require_self
+ */
+
+.btn-white{
+    color: #555;
+    border-color: #fff;
+}
+.btn-white:hover{
+    color:#fff;
+}
+
+ body{ margin-top:90px; }
+
+ul{
+    margin-left: 2em;
+}
+
+h1,
+h2 {
+   
+}
+
+p {
+    padding-bottom: 1em;
+
+    font-size: 18px;
+    line-height: 1.7em;
+
+    color: #565656;
+}
+
+
+@media (min-width: 320px) {
+    .mainContent {
+        padding-top: 30px;
+    }
+    .home-about-quote {
+        font-size: 24px;
+    }
+    img.nav-logo,
+    a.navbar-brand {
+        width: 240px;
+    }
+    h1 {
+        font-size: 48px;
+    }
+    h2 {
+        font-size: 36px;
+    }
+    h3 {
+        font-size: 24px;
+    }
+    h4 {
+        margin-bottom: 25px;
+
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    h5 {
+        margin-bottom: 25px;
+
+        font-size: 16px;
+        font-weight: 700;
+    }
+}
+
+@media (min-width: 998px) {
+    .mainContent {
+        padding-top: 50px;
+    }
+
+    img.nav-logo {
+        width: 280px;
+    }
+    a.navbar-brand {
+        width: auto;
+    }
+
+    h1 {
+        font-size: 64px;
+    }
+
+    h2 {
+        font-size: 48px;
+    }
+
+    h3 {
+        font-size: 36px;
+    }
+    h4 {
+        margin-bottom: 25px;
+
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    h5 {
+        margin-bottom: 25px;
+
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
+
+@media (min-width: 1200px) {
+    img.nav-logo {
+        width: 320px;
+    }
+}
+
+
+#flash-container {
+    margin-top: 1em;
+}
+
+.anchor {
+    position: relative;
+    top: -145px;
+
+    display: block;
+    visibility: hidden;
+}

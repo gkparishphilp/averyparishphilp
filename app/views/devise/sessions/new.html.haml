@@ -1,0 +1,36 @@
+- cache( 'v1' ) do
+	.container
+		.row
+			.col-sm-8.col-sm-offset-2{ style: "padding: 4em;" }
+				%h2.center-text
+					Login
+				#login-box{ style: 'padding:64px;border:1px #aaa solid;margin-bottom:8em;' }
+					#login-box-holder
+						.row
+							.col-xs-12
+								%header#login-header
+									#login-logo
+										=# image_tag 'logo_wht.png'
+								#login-box-inner
+
+									= render 'application/flash'
+
+									= form_for resource, as: resource_name, url: session_path( resource_name ), role: :form do |f|
+										.form-group
+											.input-group
+												%span.input-group-addon
+													%i.fa.fa-user
+												= f.text_field :login, autofocus: true, placeholder: "email", class: 'form-control'
+										.form-group
+											.input-group
+												%span.input-group-addon
+													%i.fa.fa-key
+												= f.password_field :password, placeholder: "password", class: 'form-control'
+									
+										.row{ style: 'margin:2em auto;' }
+											.col-xs-4.col-xs-offset-4
+												= f.submit "Sign in", class: 'btn btn-primary col-xs-12'
+
+										
+
+
