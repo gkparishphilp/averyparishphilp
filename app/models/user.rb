@@ -2,6 +2,9 @@ class User < SwellMedia::User
 
 	devise 		:database_authenticatable, :omniauthable, :registerable, :recoverable, :rememberable, :trackable, :authentication_keys => [:login]
 
+	has_one		:allowance
+	has_many 	:allowance_transactions, through: :allowance
+	
 
 	### Class Methods   	--------------------------------------
 	# over-riding Deivse method to allow login via name or email
@@ -12,6 +15,12 @@ class User < SwellMedia::User
 		elsif conditions.has_key?(:username) || conditions.has_key?(:email)
 			where(conditions.to_h).first
 		end
+	end
+
+
+
+	def momdad?
+		[ 'mom', 'dad' ].include?( self.name )
 	end
 
 end

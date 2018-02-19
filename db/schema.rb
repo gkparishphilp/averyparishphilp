@@ -10,12 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180218171762) do
+ActiveRecord::Schema.define(version: 20180218231636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
   enable_extension "uuid-ossp"
+
+  create_table "allowance_transactions", force: :cascade do |t|
+    t.bigint "allowance_id"
+    t.integer "amount"
+    t.integer "balance"
+    t.string "title"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["allowance_id"], name: "index_allowance_transactions_on_allowance_id"
+  end
+
+  create_table "allowances", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "amount"
+    t.integer "current_balance", default: 0
+    t.string "interval_unit", default: "week"
+    t.integer "interval_value", default: 1
+    t.text "description"
+    t.integer "status", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_allowances_on_user_id"
+  end
 
   create_table "assets", force: :cascade do |t|
     t.string "parent_obj_type"

@@ -1,0 +1,70 @@
+
+.container-fluid
+	.row
+		.col-xs-10
+			%ul.breadcrumb
+				%li
+					= link_to 'Admin', swell_media.admin_index_path
+				%li
+					%strong
+						Allowance Admin
+
+		.col-xs-2
+			%a.btn.btn-success{ data: { toggle: :modal, target: '#new_transaction' } }
+				%i.fa.fa-plus-square
+				New
+	.row
+		.col-xs-6
+			= raw paginate @transactions
+		.col-xs-6
+			
+
+	.row
+		.col-xs-12
+			%table.table
+				%thead
+					%th
+						Title
+						%a{ href: allowance_admin_index_path( sort_by: 'title', sort_dir: 'asc' ) }
+							%i.fa.fa-arrow-up
+						%a{ href: allowance_admin_index_path( sort_by: 'title', sort_dir: 'desc' ) }
+							%i.fa.fa-arrow-down
+					
+					%th
+						At
+						%a{ href: allowance_admin_index_path( sort_by: 'created_at', sort_dir: 'asc' ) }
+							%i.fa.fa-arrow-up
+						%a{ href: allowance_admin_index_path( sort_by: 'created_at', sort_dir: 'desc' ) }
+							%i.fa.fa-arrow-down
+
+					%th
+						Amount
+						%a{ href: allowance_admin_index_path( sort_by: 'amount', sort_dir: 'asc' ) }
+							%i.fa.fa-arrow-up
+						%a{ href: allowance_admin_index_path( sort_by: 'amount', sort_dir: 'desc' ) }
+							%i.fa.fa-arrow-down
+
+					
+					%th
+						Balance
+
+				%tbody
+					- @transactions.each do |transaction|
+						%tr
+							%td
+								= link_to transaction.title, edit_allowance_admin_path( transaction.id )
+
+							%td
+								= local_time transaction.created_at
+
+							%td
+								%span{ style: transaction.amount > 0 ? "color:#000;" : "color:#f00" }
+									= number_to_currency( transaction.amount.to_f / 100 )
+				
+							%td
+								= number_to_currency( transaction.balance.to_f / 100 )
+
+
+
+
+= render 'new_modal'

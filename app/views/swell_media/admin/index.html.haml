@@ -1,0 +1,16 @@
+.row
+	.col-xs-12
+		%h1
+			Hi
+			= "#{current_user}!"
+
+.row
+	.col-xs-4
+		.well
+			%h4
+				Balance
+			%h2
+				= number_to_currency( AllowanceTransaction.sum( :amount ).to_f / 100 )
+			%p
+				%a{ href: main_app.allowance_index_path }
+					View Allowance History

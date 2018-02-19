@@ -13,8 +13,6 @@
 									=# image_tag 'logo_wht.png'
 							#login-box-inner
 
-								= render 'application/flash'
-
 								= form_for resource, as: resource_name, url: session_path( resource_name ), role: :form do |f|
 									.form-group
 										.input-group
@@ -27,9 +25,9 @@
 												%i.fa.fa-key
 											= f.password_field :password, placeholder: "password", class: 'form-control'
 								
-									.row{ style: 'margin:2em auto;' }
-										.col-xs-4.col-xs-offset-4
-											= f.submit "Sign in", class: 'btn btn-primary col-xs-12'
+									.row
+										.col-xs-6.col-xs-offset-3
+											= f.submit "Login", class: 'btn btn-primary col-xs-12'
 
 									
 

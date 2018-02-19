@@ -1,0 +1,27 @@
+- cache( 'v1' ) do
+	
+	.container
+		.row{ style: 'margin-top:2em;' }
+			.col-sm-8.col-sm-offset-2
+
+				%h3.headline.first-child
+					%span
+						Get in touch
+				%p
+					I'd love to hear from you!
+
+				= form_for SwellMedia::ContactUs.new, url: swell_media.contacts_path do |f|
+					.form-group
+						= f.label :email
+						= f.text_field :email, placeholder: 'Your Email', class: 'form-control'
+					.form-group
+						= f.label :subject
+						= f.text_field :subject, placeholder: 'Subject', class: 'form-control'
+					.form-group
+						= f.label :message
+						= f.text_area :message, rows: 3, class: 'form-control'
+
+					= f.submit 'Send', class: 'btn btn-lg btn-primary pull-right'
+
+
+

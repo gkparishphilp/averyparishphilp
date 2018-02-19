@@ -1,0 +1,45 @@
+
+
+.container-fluid
+	.row
+		.col-xs-10
+			%ul.breadcrumb
+				%li
+					= link_to 'Admin', swell_media.admin_index_path
+				%li
+					= link_to 'Allowance Admin', allowance_admin_index_path
+				%li
+					%strong
+						Edit
+						= @transaction.title
+		.col-xs-2
+			
+
+	= form_for @transaction, url: allowance_admin_path( @transaction ) do |f|
+
+		.row
+			.col-xs-8
+				.form-group
+					= f.label :title
+					= f.text_field :title, class: 'form-control'
+
+
+			
+				.form-group
+					= f.label :notes
+					= f.text_area :notes, class: 'form-control'
+
+				
+
+			.col-xs-4
+				.well
+					
+					.form-group
+						= f.label :amount
+						.input-group
+							%span.input-group-addon
+								$
+							= f.text_field :amount, value: number_with_precision( (@transaction.amount.to_f / 100 ), :precision => 2 ), class: 'form-control'
+					
+					.form-group
+						= f.submit 'Update', class: 'btn btn-primary'

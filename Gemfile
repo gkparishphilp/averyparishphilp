@@ -40,6 +40,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'sitemap_generator'
 gem 'dalli'
 gem 'kaminari'
+gem 'local_time'
 gem 'memcachier'
 gem 'omniauth'
 
