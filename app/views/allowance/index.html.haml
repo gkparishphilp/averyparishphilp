@@ -15,7 +15,9 @@
 		.col-xs-6
 			= raw paginate @transactions
 		.col-xs-6
-
+			%h3
+				Current Balance
+				= number_to_currency @allowance.current_balance.to_f / 100
 	.row
 		.col-xs-12
 			%table.table
@@ -52,7 +54,7 @@
 								= transaction.title
 
 							%td
-								= transaction.created_at.to_formatted_s( :long )
+								= transaction.updated_at.to_formatted_s( :long )
 
 							%td
 								%span{ style: transaction.amount > 0 ? "color:#000;" : "color:#f00" }

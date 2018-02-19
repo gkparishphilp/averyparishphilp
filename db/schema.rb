@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20180218231636) do
     t.string "interval_unit", default: "week"
     t.integer "interval_value", default: 1
     t.text "description"
+    t.datetime "last_processed_at"
     t.integer "status", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

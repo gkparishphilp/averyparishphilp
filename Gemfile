@@ -40,7 +40,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'sitemap_generator'
 gem 'dalli'
 gem 'kaminari'
-gem 'local_time'
+#gem 'local_time' # todo -- move to swell_media
 gem 'memcachier'
 gem 'omniauth'
 

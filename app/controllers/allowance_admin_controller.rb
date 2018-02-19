@@ -19,7 +19,7 @@ class AllowanceAdminController < ApplicationController
 	def index
 		@allowance = Allowance.first
 		
-		sort_by = params[:sort_by] || 'created_at'
+		sort_by = params[:sort_by] || 'updated_at'
 		sort_dir = params[:sort_dir] || 'desc'
 
 		@transactions = @allowance.allowance_transactions.order( "#{sort_by} #{sort_dir}" )

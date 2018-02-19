@@ -11,5 +11,4 @@
 // about supported directives.
 //
 //= require app_theme
-//= require local-time
 //= require_self

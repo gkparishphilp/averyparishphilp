@@ -7,7 +7,8 @@ class AllowanceMigration < ActiveRecord::Migration[5.1]
 			t.integer 		:current_balance, default: 0
 			t.string		:interval_unit, default: 'week' # 'month' #day
 			t.integer		:interval_value, default: 1
-			t.text 			:description 
+			t.text 			:description
+			t.datetime 		:last_processed_at
 			t.integer 		:status, default: 1
 			t.timestamps
 		end

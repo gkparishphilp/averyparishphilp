@@ -55,7 +55,7 @@
 								= link_to transaction.title, edit_allowance_admin_path( transaction.id )
 
 							%td
-								= local_time transaction.created_at
+								= transaction.updated_at
 
 							%td
 								%span{ style: transaction.amount > 0 ? "color:#000;" : "color:#f00" }
