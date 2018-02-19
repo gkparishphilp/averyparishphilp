@@ -4,7 +4,7 @@
 		.col-sm-8.col-sm-offset-2{ style: "padding: 4em;" }
 			%h2.center-text
 				Login
-			#login-box{ style: 'padding:64px;border:1px #aaa solid;margin-bottom:8em;' }
+			#login-box{ style: 'padding:32px;border:1px #aaa solid;margin-bottom:8em;' }
 				#login-box-holder
 					.row
 						.col-xs-12
@@ -26,7 +26,7 @@
 											= f.password_field :password, placeholder: "password", class: 'form-control'
 								
 									.row
-										.col-xs-6.col-xs-offset-3
+										.col-sm-6.col-sm-offset-3
 											= f.submit "Login", class: 'btn btn-primary col-xs-12'
 
 									
