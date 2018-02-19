@@ -1,5 +1,5 @@
 
-class AllowanceTransaction < ApplicationPolicy
+class AllowanceTransactionPolicy < ApplicationPolicy
 	
 	def admin?
 		user.momdad?
