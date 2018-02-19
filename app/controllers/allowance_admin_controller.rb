@@ -31,7 +31,9 @@ class AllowanceAdminController < ApplicationController
 
 	def update_allowance
 		@allowance = Allowance.first
-		@allowance.amount = params[:amount].to_f * 100 
+		@allowance.amount = params[:amount].to_f * 100
+		@allowance.interval_unit = params[:interval_unit]
+		@allowance.interval_value = params[:interval_value]
 		@allowance.status = params[:status]
 		@allowance.save
 		redirect_back( fallback_location: '/admin' )

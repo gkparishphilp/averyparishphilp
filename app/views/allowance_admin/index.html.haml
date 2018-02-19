@@ -17,7 +17,35 @@
 		.col-xs-6
 			= raw paginate @transactions
 		.col-xs-6
-			
+
+	.row
+		= form_tag update_allowance_allowance_admin_path( @allowance ) do
+			.col-sm-2
+				.form-group
+					Amount
+					%br
+					.input-group
+						%span.input-group-addon
+							$
+						= text_field_tag :amount, '', value: number_with_precision( (@allowance.amount.to_f / 100 ), :precision => 2 ), class: 'form-control'
+			.col-sm-2
+				.form-group
+					Every
+					%br
+					= text_field_tag :interval_value, '', value: @allowance.interval_value, class: 'form-control'
+			.col-sm-3
+				.form-group
+					%br
+					= select_tag :interval_unit, options_for_select( ['day', 'week', 'month'], @allowance.interval_unit ), class: 'form-control'
+			.col-sm-3
+				.form-group
+					Status
+					%br
+					= select_tag :status, options_for_select( [ 'inactive', 'active', 'hold' ], @allowance.status ), class: 'form-control'
+			.col-sm-2
+				.form-group
+					%br
+					= submit_tag 'Enter', class: 'btn btn-primary'
 
 	.row
 		.col-xs-12
