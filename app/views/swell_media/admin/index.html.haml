@@ -9,7 +9,10 @@
 		.well
 
 			%h2
-				You have
+				- if current_user.momdad?
+					Avery has
+				- else
+					You have
 				= number_to_currency( AllowanceTransaction.sum( :amount ).to_f / 100 )
 			%p
 				= number_to_currency Allowance.first.amount.to_f/100
