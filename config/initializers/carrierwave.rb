@@ -5,8 +5,8 @@ if ENV['FOG_DIRECTORY'] && defined?( CarrierWave )
 				provider:				'AWS',       # required
 				aws_access_key_id:		ENV['AMZN_ASOC_KEY'],       # required
 				aws_secret_access_key:	ENV['AMZN_ASOC_SECRET'],       # required
-				#path_style:				true,
-				region:					'us-west-1',                  # optional, defaults to 'us-east-1'
+				path_style:				true,
+				region:					'us-east-1',                  # optional, defaults to 'us-east-1'
 		}
 		config.fog_directory  = ENV['FOG_DIRECTORY'] # required
 		config.asset_host = ENV['ASSET_HOST']
