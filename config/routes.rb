@@ -7,6 +7,25 @@ Rails.application.routes.draw do
   resources :allowance
 
 
+  get "/pictures/in/:cat", to: 'pictures#index'
+  get "/pictures/tagged/:tag", to: 'pictures#index'
+
+  resources :pictures
+  resources :picture_admin do 
+  	get :preview, on: :member
+  	delete :empty_trash, on: :collection
+  end
+
+  get "/writings/in/:cat", to: 'writings#index'
+  get "/writings/tagged/:tag", to: 'writings#index'
+
+  resources :writings
+  resources :writing_admin do 
+  	get :preview, on: :member
+  	delete :empty_trash, on: :collection
+  end
+
+
   get '/about' => 'swell_media/static#about'
 
 	devise_scope :user do

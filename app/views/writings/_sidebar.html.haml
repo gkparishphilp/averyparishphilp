@@ -1,0 +1,9 @@
+.well
+	%h4
+		%a{ href: '/writings' }
+			Writings
+
+	- SwellMedia::ArticleCategory.all.each do |cat|
+		.cat-list
+			%a{ href: "/writings/in/#{cat.slug}" }
+				= cat

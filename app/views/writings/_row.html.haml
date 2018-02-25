@@ -1,0 +1,11 @@
+- cache( "row-#{article.cache_key}" ) do
+	%div[article]{ style: 'margin-top:1em;margin-bottom:1em;'}
+		.artile-title{ style: 'font-size:125%;'}
+			= link_to article.title, writing_path( article )
+
+		%span.pull-right
+			= article.publish_at.strftime('%B %e, %Y')
+		%hr
+		.clearfix
+
+

@@ -1,0 +1,21 @@
+.container
+	.row
+		.col-sm-3
+			= render "sidebar"
+		.col-sm-9
+			- if @tagged.present?
+				%h1
+					= pluralize @count, 'Writing'
+					tagged
+					= "'#{@tagged}'"
+
+			- if @category.present?
+				%h1
+					= pluralize @count, 'Writing'
+					in
+					= "'#{@category}'"
+
+			= raw paginate @articles
+			- @articles.each do |article|
+				= render 'row', article: article
+			= raw paginate @articles

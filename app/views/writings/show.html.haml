@@ -1,0 +1,25 @@
+- cache( @article ) do
+	.container
+		.row{ style: 'margin-top: 2em;' }
+			.col-sm-10.col-sm-offset-1
+				.single-post-w
+					%h1.post-title
+						= @article.title
+					%p.post-info{ style: 'margin-top: -1em;' }
+						%span.info-item
+							= @article.publish_at.strftime('%B %e, %Y')
+						- if @article.tags.present?
+							%span.info-item
+								Tagged:
+								- @article.tags.each do |tag|
+									%a.post-tag{ href: articles_path( tagged: tag.name ) }
+										%span.label.label-info
+											= tag.name
+					- if @article.avatar.present?
+						.post-avatar{ style: 'text-align:center;' }
+							= image_tag @article.avatar, width: '75%'
+
+					.post-content
+						= raw @article.content
+
+
