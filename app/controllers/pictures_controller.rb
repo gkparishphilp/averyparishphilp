@@ -11,7 +11,7 @@ class PicturesController < ApplicationController
 		@title ||= "Pictures"
 
 		@pictures = Picture.active.order( publish_at: :desc )
-		@pictures = @pictures.where( category_id; @category.id ) if @category.present?
+		@pictures = @pictures.where( category_id: @category.id ) if @category.present?
 		@pictures = @pictures.with_any_tags( @tagges ) if @tagged.present?
 
 		user_level = User.roles[current_user.try( :role )] || 0

@@ -1,0 +1,21 @@
+.container
+	.row
+		.col-sm-3
+			= render "sidebar"
+		.col-sm-9
+			- if @tagged.present?
+				%h1
+					= pluralize @count, 'Picture'
+					tagged
+					= "'#{@tagged}'"
+
+			- if @category.present?
+				%h1
+					= pluralize @count, 'Picture'
+					in
+					= "'#{@category}'"
+
+			= raw paginate @pictures
+			- @pictures.each do |picture|
+				= render 'card', picture: picture
+			= raw paginate @pictures
