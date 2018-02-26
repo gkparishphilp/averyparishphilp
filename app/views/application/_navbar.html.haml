@@ -15,9 +15,14 @@
 						%span.icon-bar
 				#top-navigation.nav-collapse.subnav-collapse.navbar-collapse.collapse
 					%ul.nav.navbar-nav.navbar-right
-						%li{ class: set_css_if( path: '/about' ) }
-							%a{ href: '/about' }
-								About Me
+						%li{ class: set_css_if( path: '/writings' ) }
+							%a{ href: '/writings' }
+								My Writings
+						
+						%li{ class: set_css_if( path: '/pictures' ) }
+							%a{ href: '/pictures' }
+								My Art
+	
 						%li{ class: set_css_if( path: '/contacts/new' ) }
 							%a{ href: '/contacts/new' }
 								Contact Me

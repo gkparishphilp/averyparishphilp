@@ -8,5 +8,17 @@
 				Avery Parish-Philp
 				All rights reserved.
 		.col-xs-4.text-right
-			= link_to 'Admin', '/login'
+			- if current_user.present?
+				
+				- if current_user.admin?
+					= link_to 'Admin', '/login'
+					|
+				= link_to 'Logout', '/logout'
+				
+				
+			- else
+				= link_to 'Admin', '/login'
+	.row{ style: 'margin-bottom:2em;' }
+		.col-xs-12
+
 

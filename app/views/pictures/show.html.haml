@@ -5,5 +5,8 @@
 			%h1
 				= @picture.title
 
-			%img.img-responsive{ src: picture.avatar }
-			
+			%a{ href: @picture.avatar }
+				%img.img-responsive{ src: @picture.avatar, target: '_new' }
+
+			%p
+				= raw @picture.description

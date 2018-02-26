@@ -1,0 +1,9 @@
+.well
+	%h4
+		%a{ href: '/pictures' }
+			Pictures
+
+	- PictureCategory.all.each do |cat|
+		.cat-list
+			%a{ href: "/pictures/in/#{cat.slug}" }
+				= cat

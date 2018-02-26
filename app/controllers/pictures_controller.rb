@@ -28,9 +28,9 @@ class PicturesController < ApplicationController
 
 
 	def show
-		user_level = User.roles[current_user.try( :role )] || 0
+		@user_level = User.roles[current_user.try( :role )] || 0
 
-		@pictures = Picture.where( "availability <= :level", level: user_level )
+		@pictures = Picture.where( "availability <= :level", level: @user_level )
 
 		@picture = @pictures.friendly.find( params[:id] )
 

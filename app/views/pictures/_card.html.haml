@@ -1,5 +1,9 @@
-.col-sm-4
+
+
+
+.col-sm-6
 	.thumbnail
-		%img.img-resposive{ src: picture.avatar, alt: picture.title }
-		%p
-			= picture.title
+		%a{ href: picture_path( picture ) }
+			%img.img-resposive{ src: picture.avatar, alt: picture.title }
+		%h5{ style: 'text-align:center;' }
+			= picture.title	

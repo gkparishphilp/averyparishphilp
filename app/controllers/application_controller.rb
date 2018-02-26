@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
 	before_action :set_page_meta
 
+	around_action :set_timezone, if: :current_user
+
 
 	def after_sign_in_path_for(resource)
 		if ( oauth_uri = session.delete(:oauth_uri) ).present?
@@ -18,5 +20,10 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+
+	private
+		def set_timezone( &block )
+			Time.use_zone( current_user.timezone, &block )
+		end
 
 end

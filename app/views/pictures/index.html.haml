@@ -1,16 +1,16 @@
 .container
-	.row
+	.row{ style: 'margin-top:1em;' }
 		.col-sm-3
 			= render "sidebar"
 		.col-sm-9
 			- if @tagged.present?
-				%h1
+				%h1{ style: 'font-size:200%;' }
 					= pluralize @count, 'Picture'
 					tagged
 					= "'#{@tagged}'"
 
 			- if @category.present?
-				%h1
+				%h1{ style: 'font-size:200%;' }
 					= pluralize @count, 'Picture'
 					in
 					= "'#{@category}'"
