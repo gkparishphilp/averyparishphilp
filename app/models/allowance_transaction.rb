@@ -2,7 +2,7 @@ class AllowanceTransaction < ApplicationRecord
 
 	belongs_to 	:allowance
 
-	after_save 	:update_balances
+	after_save 	:update_balances, if: :amount_changed?
 
 
 	private
