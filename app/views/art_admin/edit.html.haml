@@ -1,0 +1,84 @@
+
+.container-fluid
+	.row
+		.col-xs-10
+			%ul.breadcrumb
+				%li
+					= link_to 'Admin', swell_media.admin_index_path
+				%li
+					= link_to 'Art Admin', art_admin_index_path
+				%li
+					%strong
+						Edit
+						= @art.title
+		.col-xs-2
+			%a.btn.btn-primary{ href: preview_art_admin_path( @art.id ), target: '_new' }
+				%i.fa.fa-eye
+				Preview
+
+	= form_for @art, url: art_admin_path( @art ) do |f|
+
+		.row
+			.col-xs-8
+				.form-group
+					= f.text_field :title, class: 'form-control input-lg'
+
+
+				-#.form-group
+					= f.label :slug_pref, 'URL for this art:'
+					.input-group
+						%span.input-group-addon
+							= SwellMedia.app_host
+						= f.text_field :slug_pref, class: 'form-control', placeholder: @art.slug
+
+					= f.label :redirect_url, 'Redirect to:'
+					= f.text_field :redirect_url, class: 'form-control'
+
+
+				.row
+					.col-xs-10.col-xs-offset-1
+						.form-group
+							= f.label :avatar, 'Image (default):'
+							= image_tag @art.avatar.to_s, class: 'img-responsive', id: 'art_avatar_img'
+							%div{ style: 'text-align:center;padding:0.3em;' }
+								%a{ href: '#', data: { toggle: :assetup, for: '#art_avatar,#art_avatar_img', asset: { asset_type: 'image', use: 'avatar', status: 'active', parent_obj_id: @art.id, parent_obj_type: @art.class.base_class.name }.to_json, params: { authenticity_token: form_authenticity_token() }.to_json } }
+									%i.fa.fa-upload
+									upload
+							= f.hidden_field :avatar, class: 'form-control', id: 'art_avatar'
+							-# = text_field_tag :avatar_text_field, '', class: 'form-control', placeholder: 'Full Path to Image', data: { inputfor: '#art_avatar_asset_url' }
+					
+
+
+				.form-group
+					= f.label :description
+					= f.text_area :description, class: 'form-control wysiwyg', data: { wysiwyg: { height_min: 100, toolbar_sticky: true, toolbar_preset: 'admin_default', asset_manager: swell_media.asset_manager_index_path( asset: { parent_obj_type: @art.class.name, parent_obj_id: @art.id }, request_forgery_protection_token.to_s => form_authenticity_token, response: :json ) }.to_json }
+
+			
+
+			.col-xs-4
+				.well
+					-#.form-group
+						= f.label :user_id, 'Author'
+						= f.collection_select :user_id, SwellMedia.registered_user_class.constantize.where( "role > 1" ), :id, :name, {}, class: 'form-control'
+					.form-group
+						= f.label :publish_at
+						= f.text_field :publish_at, value: current_user.to_local_tz( @art.publish_at ), class: 'form-control datetimepicker'
+					.form-group
+						= f.label :category_id
+						= f.collection_select :category_id, ArtCategory.active.order( :name ), :id, :name, { include_blank: '-- None -- ' }, class: 'form-control'
+					.form-group
+						= f.text_field :category_name, class: 'form-control', placeholder: 'Add Category'
+					.form-group
+						= f.label :status
+						= f.collection_select :status, Art.statuses, :first, :first, {}, class: 'form-control'
+					.form-group
+						= f.label :availability
+						= f.collection_select :availability, Art.availabilities, :first, :first, {}, class: 'form-control'
+					.form-group
+						= f.label :tags_csv, 'Tags:'
+						= f.text_field :tags_csv, placeholder: 'Separate tags with commas', class: 'form-control'
+					-#.form-group
+						= f.check_box :is_commentable, {}, 'true', 'false'
+						Allow Comments?
+					.form-group
+						= f.submit 'Update', class: 'btn btn-primary'

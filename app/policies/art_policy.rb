@@ -1,5 +1,5 @@
 
-class PicturePolicy < ApplicationPolicy
+class ArtPolicy < ApplicationPolicy
 	
 	def admin?
 		user.admin?

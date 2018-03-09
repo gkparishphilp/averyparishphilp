@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   resources :allowance
 
 
-  get "/pictures/in/:cat", to: 'pictures#index'
-  get "/pictures/tagged/:tag", to: 'pictures#index'
+  get "/art/in/:cat", to: 'art#index'
+  get "/art/tagged/:tag", to: 'art#index'
 
-  resources :pictures
-  resources :picture_admin do 
+  resources :art
+  resources :art_admin do 
   	get :preview, on: :member
   	delete :empty_trash, on: :collection
   end

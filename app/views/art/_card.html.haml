@@ -3,7 +3,8 @@
 
 .col-sm-6
 	.thumbnail
-		%a{ href: picture_path( picture ) }
+		%a{ href: art_path( picture ) }
 			%img.img-resposive{ src: picture.avatar, alt: picture.title }
 		%h5{ style: 'text-align:center;' }
-			= picture.title	
+			%a{ href: art_path( picture ) }
+				= picture.title	

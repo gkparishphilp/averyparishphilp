@@ -5,15 +5,15 @@
 				%button.close{ type: :button, 'data-dismiss' => 'modal', 'aria-hidden' => 'true' }
 					&times;
 				%h4.modal-title
-					New Picture
-			= form_for Picture.new, url: picture_admin_index_path do |f|
+					Add Art
+			= form_for Art.new, url: art_admin_index_path do |f|
 				.modal-body
 					.form-group
 						= f.label :title
 						= f.text_field :title, class: 'form-control'
 					.form-group
 						= f.label :category_id
-						= f.collection_select :category_id, PictureCategory.active.order( :name ), :id, :name, {}, class: 'form-control'
+						= f.collection_select :category_id, ArtCategory.active.order( :name ), :id, :name, {}, class: 'form-control'
 					.form-group
 						= f.label :description
 						= f.text_area :description, class: 'form-control'

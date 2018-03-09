@@ -1,0 +1,9 @@
+.well
+	%h4
+		%a{ href: '/art' }
+			Art
+
+	- ArtCategory.all.each do |cat|
+		.cat-list
+			%a{ href: "/art/in/#{cat.slug}" }
+				= cat
